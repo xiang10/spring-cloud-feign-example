@@ -1,5 +1,6 @@
 package example;
 
+import example.formdata.FileMeta;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -40,16 +41,5 @@ public class GitHubClientTest {
     }
 
 
-    @Test
-    public void testUploadFiles() throws Exception {
-        URL url = this.getClass().getClassLoader().getResource("1e97b70.jpg");
-        String path = URLDecoder.decode(url.getFile());
-        File file = new File(path);
-
-        MultipartFile multipartFile = new MockMultipartFile(file.getName(),FileUtils.openInputStream(file));
-        client.files(multipartFile,"cat.jpg");
-        System.out.println("");
-
-    }
 
 }

@@ -5,8 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.ArrayList;
@@ -39,17 +40,6 @@ public class App {
     }
 
 
-    @PostMapping("/files/{name:.+}")
-    @ResponseBody
-    public FileMeta files(@RequestParam("file") MultipartFile multipartFile, @PathVariable("name") String name) {
-
-        FileMeta fileMeta = new FileMeta();
-        fileMeta.setName(name);
-        fileMeta.setPath(multipartFile.getOriginalFilename());
-        fileMeta.setSize(multipartFile.getSize());
-        fileMeta.setContentType(multipartFile.getContentType());
-        return fileMeta;
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
