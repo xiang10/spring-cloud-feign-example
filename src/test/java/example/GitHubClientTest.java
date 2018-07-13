@@ -48,6 +48,7 @@ public class GitHubClientTest {
 
         MultipartFile multipartFile = new MockMultipartFile(file.getName(),FileUtils.openInputStream(file));
         client.files(multipartFile,"cat.jpg");
+        System.out.println("");
 
     }
 
